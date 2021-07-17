@@ -1,0 +1,41 @@
+ version: '3'
+
+#создаем сеть для контейнеров 
+ networks:
+   my_net: 
+
+#контейнер с postgres взят с докер хаба, задаем переменные среды пользователя пароль базу,
+#задаем порты, добовляем в сеть, параметр рестарт значение всегда(упадет поднимется=)) 
+ services:
+  db:
+     container_name: db
+     image: postgres:11.4-alpine
+     volumes:
+       - ./pg_data:/var/lib/postgresql/data/pgdata
+     environment:
+       - POSTGRES_USER=worker
+       - POSTGRES_PASSWORD=worker
+       - POSTGRES_DB=python_sample_app_db
+       - PGDATA=/var/lib/postgresql/data/pgdata 
+     ports:
+       - 5432:5432
+     networks:
+       - my_net
+     restart: always
+
+#контейнер с приложением собирается из докер файла, запускается после запуска бд
+
+  app:
+     container_name: application
+     build: .
+     depends_on:
+      - db
+     environment:
+      - POSTGRESQL_URL=postgresql://worker:worker@db/python_sample_app_db  
+     command: bash -c 'flask db upgrade && python app.py'
+     ports:
+      - 5000:5000
+     networks:
+      - my_net
+     restart: always
+
