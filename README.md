@@ -32,8 +32,11 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 Выполните по порядку:
 
 Создать директорию
+
 Выполнить git clone https://gitlab.ru/talilon-py/docker-compose.git
+
 Перейти в директорию docker-compose
+
 ВЫполнить docker-compose up
 
 *******************************************************************
