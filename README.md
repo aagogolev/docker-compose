@@ -1,11 +1,10 @@
-**Проект развертывания рабочего окружения для python-sample-app **
-
-**Для настройки выполните команды:
-
-1. Установка docker и docker-compose**
+# Проект развертывания рабочего окружения для python-sample-app
 
 
-Для установки docker выполните по порядку команды:
+## 1. Установка docker и docker-compose
+
+
+### Для установки docker выполните по порядку команды:
 
 sudo apt update
 
@@ -20,7 +19,7 @@ sudo apt update
 sudo apt install docker-ce
 
 
-Для установки docker-compose выполните по порядку команды:
+### Для установки docker-compose выполните по порядку команды:
 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
@@ -28,7 +27,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-2. Развертывание проекта: 
+## 2. Развертывание проекта: 
 
 Выполните по порядку:
 
@@ -38,7 +37,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ВЫполнить docker-compose up
 
 *******************************************************************
-Вспомогательные функии:
+### Вспомогательные функии:
 
 Остановка  docker-compose down
 
